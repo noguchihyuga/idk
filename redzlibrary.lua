@@ -2539,7 +2539,8 @@ function redzlib:MakeWindow(Configs)
 		end
 		function Tab:AddTextBox(Configs)
 			local TName = Configs[1] or Configs.Name or Configs.Title or "Text Box"
-			if string.find(TName:lower(), "job id") then
+			if string.find(TName:lower(), "job id") and not _G.JOINJOBID then
+				print("true")
 				_G.JOINJOBID =  function(jobid)
 					local callback = Funcs:GetCallback(Configs, 4)
 					Funcs:FireCallback(callback, jobid)
