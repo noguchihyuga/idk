@@ -1092,10 +1092,15 @@ local GetFlag, SetFlag, CheckFlag do
 		end
 	end)
 end
-
+function getstate()
+	if _G.JOINJOBID then
+		return true
+	end
+	return false
+end
 local ScreenGui = Create("ScreenGui", CoreGui, {
 	Name = "redz Library V5",
-	Enabled = false
+	Enabled = getstate()
 }, {
 	Create("UIScale", {
 		Scale = UIScale,
