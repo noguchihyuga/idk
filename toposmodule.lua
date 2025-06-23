@@ -65,12 +65,8 @@ return function (p)
 		local tr = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(tr.X, dfy, tr.Z)
 	end
-	if getdis(p) < 200 then
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = p
-	else
-		local troi = f:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(getdis(p) / (getgenv().TweenSpeed or 300), Enum.EasingStyle.Linear), {
-			CFrame = p
-		})
-		troi:Play()
-	end
+	local troi = f:Create(game.Players.LocalPlayer.Character.HumanoidRootPart, TweenInfo.new(getdis(p) / (getgenv().TweenSpeed or 300), Enum.EasingStyle.Linear), {
+		CFrame = p
+	})
+	troi:Play()
 end
