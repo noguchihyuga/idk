@@ -114,4 +114,8 @@ function module:noclip(v)
         end
     end)
 end
+function module:getdis(x,y)
+    y = y or game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+    return (x.Position - y.Position).Magnitude
+end
 return module
