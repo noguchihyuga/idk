@@ -51,35 +51,14 @@ function module:topos(targetCFrame)
     tween:Play()
     return tween
 end
-function module:join(v)
-    v = v or "Marines"
-    if v == "Marines" or not v then
-        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam", "Marines")
-    elseif v == "Pirates" then
-        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam", "Pirates")
-    end
-    local L_207_ = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("ChooseTeam", true)
-    local L_208_ = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("UIController", true)
-
-    if L_207_ and L_207_.Visible  then
-        repeat
-            task.wait(1)
-            if L_207_ and L_207_.Visible and L_208_ then
-                for L_209_forvar0, L_210_forvar1 in pairs(getgc(true)) do
-                    if type(L_210_forvar1) == "function" and getfenv(L_210_forvar1).script == L_208_ then
-                        local L_211_ = getconstants(L_210_forvar1)
-                        pcall(function()
-                            if (L_211_[1] == "Pirates" or L_211_[1] == "Marines") and #L_211_ == 1 then
-                                if L_211_[1] == v then
-                                    L_210_forvar1(v)
-                                end
-                            end
-                        end)
-                    end
-                end
-            end
-
-        until game:GetService("Players").LocalPlayer.Team
+function module:join(v2)
+    v2 = v2 and (v2 == "Marines" or v2 == "Pirates") and v2 or "Marines"
+    -- firesignal(game:GetService("Players").LocalPlayer.PlayerGui["Main (minimal)"].ChooseTeam.Container.Marines.Frame.TextButton.Activated)
+    for i, v in pairs(game:GetService("Players").LocalPlayer.PlayerGui:GetChildren()) do
+        if v:FindFirstChild("ChooseTeam") then
+            local thua = v.ChooseTeam.Container[v2].Frame.TextButton
+            firesignal(thua.Activated)
+        end
     end
 end
 function module:tele(v)
