@@ -3,4 +3,6 @@ local ok = {
     [4442272183] = "T4cNiuRrBw_Nh3f2cTi6rPJVVOq1vkRSr4Ov9NtjM8G3sccIAQAAAA2",
     [7449423635] = "KbCZXcs_H0zJGAT7vxZOxr8_jueOQkspkp0z2Xw1MYgTLwW8AQAAAA2"
 }
-game.RobloxReplicatedStorage.ContactListIrisInviteTeleport:FireServer(game.PlaceId, "", ok[game.PlaceId])
+if #game.Players:GetChildren() > 3 then
+    game.RobloxReplicatedStorage.ContactListIrisInviteTeleport:FireServer(game.PlaceId, "", ok[game.PlaceId])
+end
