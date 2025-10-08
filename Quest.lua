@@ -1,4 +1,6 @@
-
+local World1 = game.PlaceId == 2753915549
+local World2 = game.PlaceId == 4442272183
+local World3 = game.PlaceId == 7449423635
 function QuestCheck()
     local Mon, Qname, Qdata, NameMon, PosM, PosQ
     local x = game["Players"]["LocalPlayer"]["Data"]["Level"]["Value"]
