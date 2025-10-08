@@ -37,7 +37,7 @@ function module:topos(targetCFrame)
     local player_ = Players_.LocalPlayer
     local char__ = player_.Character or player_.CharacterAdded:Wait()
     local hrp__ = char__:WaitForChild("HumanoidRootPart")
-    local distance = (hrp.Position - targetCFrame.Position).Magnitude
+    local distance = (hrp__.Position - targetCFrame.Position).Magnitude
     local speed = distance / 300
     
     local tweenInfo = TweenInfo.new(
