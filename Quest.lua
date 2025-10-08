@@ -755,4 +755,4 @@ function QuestCheck()
     end
   return Mon, Qname, Qdata, NameMon, PosM, PosQ
 end
-return QuestCheck()
+return QuestCheck
