@@ -37,7 +37,7 @@ function module:topos(targetCFrame)
     local player_ = Players_.LocalPlayer
     local char__ = player_.Character or player_.CharacterAdded:Wait()
     local hrp__ = char__:WaitForChild("HumanoidRootPart")
-    local distance = (hrp__.Position - targetCFrame.Position).Magnitude
+    local distance = (hrp.Position - targetCFrame.Position).Magnitude
     local speed = distance / 300
     
     local tweenInfo = TweenInfo.new(
@@ -101,4 +101,9 @@ function module:getdis(x,y)
     y = y or game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
     return (x.Position - y.Position).Magnitude
 end
+(game:GetService("Players")).LocalPlayer.Idled:connect(function()
+	(game:GetService("VirtualUser")):Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame);
+	wait(1);
+	(game:GetService("VirtualUser")):Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame);
+end);
 return module
