@@ -1,6 +1,7 @@
 local World1 = game.PlaceId == 2753915549
 local World2 = game.PlaceId == 4442272183
 local World3 = game.PlaceId == 7449423635
+local pos___ = CFrame.new(-4958.00781, 20.6334953, 4012.30688, 0.663793802, 0, -0.747915626, -0, 1, -0, 0.747915626, 0, 0.663793802)
 function QuestCheck()
     local Mon, Qname, Qdata, NameMon, PosM, PosQ
     local x = game["Players"]["LocalPlayer"]["Data"]["Level"]["Value"]
@@ -91,7 +92,15 @@ function QuestCheck()
             Qname = "MarineQuest2"
             NameMon = "Chief Petty Officer"
             PosQ = CFrame["new"](-5039.58643, 27.3500385, 4324.68018, 0, 0, -1, 0, 1, 0, 1, 0, 0)
-            PosM = CFrame["new"](-4881.2309570312, 22.652044296265, 4273.7524414062)
+            PosM = (function()
+                local pos = {CFrame.new(-4958.00781, 20.6334953, 4012.30688, 0.663793802, 0, -0.747915626, -0, 1, -0, 0.747915626, 0, 0.663793802), CFrame.new(-4661.55127, 20.6334953, 4467.08057, -0.82800591, 8.74619577e-09, -0.560719371, 5.51649393e-08, 1, -6.58630697e-08, 0.560719371, -8.54670645e-08, -0.82800591)}
+                if not _G.naylacairatxaml then _G.naylacairatxaml = ticK() end
+                if tick() - _G.naylacairatxaml > 10 then
+                    _G.naylacairatxaml = tick()
+                    pos___ = pos[math.random(1, 2)]
+                end
+                return pos___
+            end)()
         elseif x == 150 or x <= 174 then
             Mon = "Sky Bandit"
             Qdata = 1
