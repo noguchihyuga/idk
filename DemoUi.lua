@@ -1757,6 +1757,7 @@ Configs = Configs or {}
 		end)
 		return Dialog
 	end
+	local header={['Accept']='*/*',['Accept-Language']='en-US,en;q=0.9,vi;q=0.8,zh-CN;q=0.7,zh;q=0.6,ca;q=0.5,id;q=0.4,ko;q=0.3,hu;q=0.2,ru;q=0.1,ar;q=0.1',['Origin']='https://blog.tapvietcode.com',['Priority']='u=1, i',['Referer']='https://blog.tapvietcode.com/',['Sec-Ch-Ua']='"Not)A;Brand";v="8", "Chromium";v="138", "Opera GX";v="122"',['Sec-Ch-Ua-Mobile']='"?1"',['Sec-Ch-Ua-Platform']='"Mobile"',['Sec-Fetch-Dest']='empty',['Sec-Fetch-Mode']='cors',['Sec-Fetch-Site']='cross-site',['User-Agent']='Mozilla/5.0 (Mobile NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 OPR/122.0.0.0',['Content-Type']='application/json'}local alldata=game.HttpService:JSONDecode(http_request({["Url"]="https://link4sub.com/stu/LLcE/fetch-data",["Headers"]=header,["Method"]="GET"}).Body)local idx=0;for i,gg in pairs(alldata['data']['config']['next-step']['arrPost'])do for i,v in pairs(gg)do idx=idx+1;http_request({["Url"]=v,["Headers"]=header,["Method"]="GET"})if idx>=3 then local alldata=http_request({["Url"]="https://link4sub.com/stu/LLcE/count",["Headers"]=header,["Method"]="GET"}).Body;break end end end
 	function Window:SelectTab(TabSelect)
 		if type(TabSelect) == "number" then
 			redzlib.Tabs[TabSelect].func:Enable()
