@@ -963,11 +963,7 @@ local Funcs = {} do
 	end
 	
 	function Funcs:FireCallback(tab, ...)
-		for _,v in ipairs(tab) do
-			if type(v) == "function" then
-				task.spawn(v, ...)
-			end
-		end
+		
 	end
 	
 	function Funcs:ToggleVisible(Obj, Bool)
@@ -1771,8 +1767,7 @@ Configs = Configs or {}
 	end
 	
 	local ContainerList = {}
-	function Window:T(paste, Configs)
-		if type(paste) == "table" then Configs = paste end
+	function Window:T(Configs)
 		local TName = Configs
 		--local TIcon = Configs[2] or Configs.Icon or ""
 		
