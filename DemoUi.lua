@@ -2746,7 +2746,7 @@ Configs = Configs or {}
 	G2L["2"] = Instance.new("ImageButton", G2L["1"]);
 	G2L["2"]["BorderSizePixel"] = 0;
 	G2L["2"].Visible = true
-	self:MakeDraggable(G2L["2"],G2L["2"])
+	G2L["2"].Draggable =  true
 	-- [ERROR] cannot convert ImageContent, please report to "https://github.com/uniquadev/GuiToLuaConverter/issues"
 	G2L["2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
 	G2L["2"]["Image"] = [[rbxassetid://136103435617044]];
