@@ -963,7 +963,11 @@ local Funcs = {} do
 	end
 	
 	function Funcs:FireCallback(tab, ...)
-		
+		for _,v in ipairs(tab) do
+			if type(v) == "function" then
+				task.spawn(v, ...)
+			end
+		end
 	end
 	
 	function Funcs:ToggleVisible(Obj, Bool)
@@ -998,12 +1002,6 @@ local Funcs = {} do
 	end
 	
 	function Funcs:GetCallback(Configs, index)
-		local func = Configs[index] or Configs.Callback or function()end
-		
-		if type(func) == "table" then
-			return ({function(Value) func[1][func[2]] = Value end})
-		end
-		return {func}
 	end
 end
 
