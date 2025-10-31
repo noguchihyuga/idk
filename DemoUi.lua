@@ -2734,6 +2734,39 @@ Configs = Configs or {}
 	
 	CloseButton.Activated:Connect(Window.CloseBtn)
 	MinimizeButton.Activated:Connect(Window.MinimizeBtn)
+	
+	local G2L = {};
+
+	-- StarterGui.ScreenGui
+	G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+	G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+
+
+	-- StarterGui.ScreenGui.ImageButton
+	G2L["2"] = Instance.new("ImageButton", G2L["1"]);
+	G2L["2"]["BorderSizePixel"] = 0;
+	G2L["2"].Visible = true
+	self:MakeDraggable(G2L["2"],G2L["2"])
+	-- [ERROR] cannot convert ImageContent, please report to "https://github.com/uniquadev/GuiToLuaConverter/issues"
+	G2L["2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+	G2L["2"]["Image"] = [[rbxassetid://136103435617044]];
+	G2L["2"]["Size"] = UDim2.new(0, 50, 0, 50);
+	G2L["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+	G2L["2"]["Position"] = UDim2.new(0.26651, 0, 0.43687, 0);
+
+
+	-- StarterGui.ScreenGui.ImageButton.UICorner
+	G2L["3"] = Instance.new("UICorner", G2L["2"]);
+	G2L["3"]["CornerRadius"] = UDim.new(1, 0);
+
+
+	-- StarterGui.ScreenGui.ImageButton.UIStroke
+	G2L["4"] = Instance.new("UIStroke", G2L["2"]);
+	G2L["4"]["Thickness"] = 2;
+	G2L["4"]["Color"] = Color3.fromRGB(255, 92, 220);
+	G2L["2"].MouseButton1Click:Connect(function()
+		ScreenGui.Enabled = not ScreenGui.Enabled
+	end)
 	return Window
 end
 
