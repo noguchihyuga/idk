@@ -963,10 +963,14 @@ local Funcs = {} do
 	end
 	
 	function Funcs:FireCallback(tab, ...)
-		for _,v in ipairs(tab) do
-			if type(v) == "function" then
-				task.spawn(v, ...)
+		if type(tab) == "table" then
+			for _,v in ipairs(tab) do
+				if type(v) == "function" then
+					task.spawn(v, ...)
+				end
 			end
+		else
+			task.spawn(tab,...)
 		end
 	end
 	
