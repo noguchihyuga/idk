@@ -1782,7 +1782,7 @@ Configs = Configs or {}
 		})Make("Corner", TabSelect)
 		
 		local LabelTitle = InsertTheme(Create("TextLabel", TabSelect, {
-			Size = UDim2.new(1, TIcon -15, 1),
+			Size = UDim2.new(1, -15, 1),
 			Position = UDim2.fromOffset(TIcon and 25 or 15),
 			BackgroundTransparency = 1,
 			Font = Enum.Font.GothamMedium,
