@@ -228,4 +228,61 @@ G2L["12"]["Position"] = UDim2.new(0.01, 0, 0.5, 0);
 G2L["12"].ZIndex = 5
 G2L["12"].Draggable = true
 G2L["13"] = Instance.new("UICorner", G2L["12"]);
-return G2L
+
+local aaaa = {
+	[false] = "Show",
+	[true] = "Hide"
+}
+G2L["12"].MouseButton1Click:Connect(function()
+	G2L["1"].Enabled = not G2L["1"].Enabled
+	G2L["12"].Text = aaaa[G2L["1"].Enabled]
+end)
+
+local level = G2L["a"]
+local fragment = G2L["9"]
+local status = G2L["b"]
+local executor = G2L["c"]
+local time = G2L["d"]
+
+function ShortenNumber(num)
+	if num >= 1e9 then
+		return string.format("%.1fB", num / 1e9):gsub("%.0B", "B")
+	elseif num >= 1e6 then
+		return string.format("%.1fM", num / 1e6):gsub("%.0M", "M")
+	elseif num >= 1e3 then
+		return string.format("%.1fK", num / 1e3):gsub("%.0K", "K")
+	else
+		return tostring(num)
+	end
+end
+function FormatTime(seconds)
+	local h = math.floor(seconds / 3600)
+	local m = math.floor((seconds % 3600) / 60)
+	local s = math.floor(seconds % 60)
+
+	local result = ""
+	if h > 0 then
+		result = result .. h .. "h"
+	end
+	if m > 0 or h > 0 then
+		result = result .. m .. "m"
+	end
+	result = result .. s .. "s"
+
+	return result
+end
+local lasttick_ = tick()
+spawn(function()
+	while wait() do
+		level.Text = [[Level: <font color="#55aaff">]].. tostring(game:GetService("Players").LocalPlayer.Data.Level.Value) ..[[</font>    Beli: <font color="#55ff00">]] .. ShortenNumber(game:GetService("Players").LocalPlayer.Data.Beli.Value) .. [[</font>]]
+		fragment.Text = [[Fragment: <font color="#aa55ff">]]..ShortenNumber(game:GetService("Players").LocalPlayer.Data.Fragments.Value) ..[[</font>]]
+		-- status.Text = [[<font color="##aaaaff">Status</font>: ]] .. ""
+		executor.Text = [[Executor: ]] .. identifyexecutor()
+		time.Text = [[Account Time: ]] .. FormatTime(math.floor(tick() - lasttick_))
+	end
+end)
+
+local abc = function (vv)
+	status.Text = '<font color="#aaaaff">Status</font>: ' .. vv
+end
+return abc
