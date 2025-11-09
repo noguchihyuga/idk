@@ -16,8 +16,15 @@ local hrp = char:WaitForChild("HumanoidRootPart")
 local module = {}
 function module:eq()
     for x, L in pairs(game.Players.LocalPlayer["Backpack"]:GetChildren()) do
-		if L:IsA("Tool") and L["ToolTip"] == "Melee" then
+		if L:IsA("Tool") and L["ToolTip"] == "Melee" and not _G.USESWORD then
 			local a,b = pcall(function ()
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(L)
+            end)
+            if a then
+                break
+            end
+        elseif L:IsA("Tool") and L["ToolTip"] == "Sword" and _G.USESWORD then
+            local a,b = pcall(function ()
                 game.Players.LocalPlayer.Character.Humanoid:EquipTool(L)
             end)
             if a then
@@ -101,9 +108,9 @@ function module:getdis(x,y)
     y = y or game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
     return (x.Position - y.Position).Magnitude
 end
-(game:GetService("Players")).LocalPlayer.Idled:connect(function()
+game:GetService("Players").LocalPlayer.Idled:connect(function()
 	(game:GetService("VirtualUser")):Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame);
 	wait(1);
 	(game:GetService("VirtualUser")):Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame);
-end);
+end)
 return module
