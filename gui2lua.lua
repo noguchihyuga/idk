@@ -1,7 +1,11 @@
 function to_string(nger)
+    if typeof(nger) == "string" then
+        return '"' .. nger .. '"'
+    end
 	if typeof(nger) == "Vector3" or typeof(nger) == "CFrame" then
 		return string.format("%s.new(%s)", typeof(nger), tostring(nger))
-
+    elseif typeof(nger) == "Vector2" then
+        return string.format("%s.new(%s)", typeof(nger), tostring(nger))
 	elseif typeof(nger) == "UDim2" then
 		return string.format("UDim2.new(%s, %s, %s, %s)", 
 			tostring(nger.X.Scale), tostring(nger.X.Offset), 
@@ -396,7 +400,7 @@ local cache4 = {}
 local biendakhaibao = 1
 local hs = game:GetService("HttpService")
 local CODE = "--[[ GUI 2 LUA - Made by nguyen linh chi - open source ]]\n"
-local targetins = script.Parent
+local targetins = game:GetService("CoreGui")["Nousigi Hub GUI"].Main.MainContainer.Concacontainer.Concacmain.MainPage.Page1.PageList["Misc Shop_Dot"]["Redeem Code_Row"]
 cache1[targetins] = hs:GenerateGUID(false)
 cache2[cache1[targetins]] = {
 	["FullName"] = targetins:GetFullName(),
@@ -454,4 +458,4 @@ for i, v in pairs(targetins:GetDescendants()) do
 		
 	end
 end
-print(CODE)
+rconsoleprint(CODE .. "\n")
