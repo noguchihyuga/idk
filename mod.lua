@@ -1,6 +1,6 @@
 local f = "TeddyHub/teddymain.json"
 
-local library = loadfile("a.txt")()
+local library = loadstring(game:HttpGet("https://github.com/noguchihyuga/idk/blob/main/Ui3.lua?raw=true"))()
 local lib = {}
 local lastsection = false
 function lib:MakeWindow(...)
