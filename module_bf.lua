@@ -39,7 +39,12 @@ function module:haki()
 	end
 end
 
-function module:topos(targetCFrame)
+function module:topos(targetCFrame, v36)
+    pcall(function ()
+        if not v36 then
+            game.Players.LocalPlayer.Character.Humanoid.Sit = false
+        end
+    end)
     local Players_ = game:GetService("Players")
     local player_ = Players_.LocalPlayer
     local char__ = player_.Character or player_.CharacterAdded:Wait()
@@ -82,7 +87,7 @@ end
 function module:noclip(v)
     spawn(function ()
         while wait() do
-            if loadstring(v)() then
+            if loadstring(v)() and not game.Players.LocalPlayer.Character.Humanoid.Sitgame.Players.LocalPlayer.Character.Humanoid.Sit then
                 
                 if not Players["LocalPlayer"]["Character"]["HumanoidRootPart"]:FindFirstChild("BodyClip") then
                     local L_348_ = Instance["new"]("BodyVelocity")
