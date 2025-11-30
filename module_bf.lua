@@ -87,7 +87,7 @@ end
 function module:noclip(v)
     spawn(function ()
         while wait() do
-            if loadstring(v)() and not game.Players.LocalPlayer.Character.Humanoid.Sitgame.Players.LocalPlayer.Character.Humanoid.Sit then
+            if loadstring(v)() and not game.Players.LocalPlayer.Character.Humanoid.Sit then
                 
                 if not Players["LocalPlayer"]["Character"]["HumanoidRootPart"]:FindFirstChild("BodyClip") then
                     local L_348_ = Instance["new"]("BodyVelocity")
