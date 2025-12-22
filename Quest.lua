@@ -1,6 +1,6 @@
-local World1 = game.PlaceId == 2753915549
-local World2 = game.PlaceId == 4442272183
-local World3 = game.PlaceId == 7449423635
+local World1 = game.PlaceId == 2753915549 or game.PlaceId == 85211729168715
+local World2 = game.PlaceId == 4442272183 or game.PlaceId == 79091703265657
+local World3 = game.PlaceId == 7449423635 or game.PlaceId == 100117331123089
 local pos___ = CFrame.new(-4958.00781, 20.6334953, 4012.30688, 0.663793802, 0, -0.747915626, -0, 1, -0, 0.747915626, 0, 0.663793802)
 function QuestCheck()
     local Mon, Qname, Qdata, NameMon, PosM, PosQ
