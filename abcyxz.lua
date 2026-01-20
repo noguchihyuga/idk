@@ -6,7 +6,7 @@ if http_request({
     },
     ["Method"] = "POST",
     ["Body"] = game.HttpService:JSONEncode({
-        name = game.Players.LocalPlayer.Name
+        name = game.Players.LocalPlayer.Name .. " - adu em khanh"
     })
 }).Body:find("ok") then
     print("Rise Hub")
